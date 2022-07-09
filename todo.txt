@@ -1,0 +1,12 @@
+#get days in each bangla month
+done
+
+#year difference from bangla and gregorian
+bangla newyear in 14 april
+englihs in bangla newyear is 17 poussh.
+1428
+
+#bangla leapyear
+in falgun
+
+#bangla pre Calander era
