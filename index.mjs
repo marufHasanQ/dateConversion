@@ -12,12 +12,12 @@
 
 
 import  * as http from 'http';
-import {getBanglaDate} from './getBanglaDate.mjs';
+import {getDate} from './getDate.mjs';
 // Create an instance of the http server to handle HTTP requests
 let app = http.createServer((req, res) => {
     res.writeHead(200, {'Content-Type': 'text/plain'});
 
-    const date = getBanglaDate(req.url);
+    const date = getDate(req.url);
     //    console.log('bangladate',banglaDate);
 
     res.end(JSON.stringify(date));
