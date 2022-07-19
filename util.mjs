@@ -51,39 +51,47 @@ function checkLeapYear(year) {
     return (year % 4 === 0 && year % 100 !== 0) || year % 400===0? true : false;
 }
 
-function getBanglaDate(dateObject) {
-    const comparisonArray = generateComparisonArray(checkLeapYear(dateObject.year)); 
+function getBanglaDate(comparisonArray) {
+    return dateObject => {
+        //const comparisonArray = generateComparisonArray(checkLeapYear(dateObject.year + 594)); 
 
-    const index = indexFind(comparisonArray)((a,v,i,ar) => {
-        return v[0] === dateObject.month && v[1] === dateObject.day;
-    });
+        //function getBanglaDate(dateObject) {
+        //   const comparisonArray = generateComparisonArray(checkLeapYear(dateObject.year)); 
+        comparisonArray = checkLeapYear(dateObject.year ) ? comparisonArray[0]: comparisonArray[1];
 
-    const yearBoundaryIndex = indexFind(comparisonArray)((a,v,i,ar) => {
-        return v[2] === 1 && v[3] === 1;
-    });
+        const index = indexFind(comparisonArray)((a,v,i,ar) => {
+            return v[0] === dateObject.month && v[1] === dateObject.day;
+        });
 
-    const year = dateObject.year - 594 + (index>= yearBoundaryIndex?1:0);
-    //return [comparisonArray[index][3],comparisonArray[index][2],year];
+        const yearBoundaryIndex = indexFind(comparisonArray)((a,v,i,ar) => {
+            return v[2] === 1 && v[3] === 1;
+        });
 
-    const [month,day] = [comparisonArray[index][2],comparisonArray[index][3]];
-    return {day,month,year};
+        const year = dateObject.year - 594 + (index>= yearBoundaryIndex?1:0);
+        //return [comparisonArray[index][3],comparisonArray[index][2],year];
+
+        const [month,day] = [comparisonArray[index][2],comparisonArray[index][3]];
+        return {day,month,year};
+    }
 }
 
-function getGregorianDate(dateObject) {
-    const comparisonArray = generateComparisonArray(checkLeapYear(dateObject.year + 594)); 
+function getGregorianDate(comparisonArray) {
+    return dateObject => {
+        //const comparisonArray = generateComparisonArray(checkLeapYear(dateObject.year + 594)); 
+        comparisonArray = checkLeapYear(dateObject.year + 594) ? comparisonArray[0]: comparisonArray[1];
+        const index = indexFind(comparisonArray)((a,v,i,ar) => {
+            return v[2] === dateObject.month && v[3] === dateObject.day;
+        });
 
-    const index = indexFind(comparisonArray)((a,v,i,ar) => {
-        return v[2] === dateObject.month && v[3] === dateObject.day;
-    });
+        const yearBoundaryIndex = indexFind(comparisonArray)((a,v,i,ar) => {
+            return v[2] === 1 && v[3] === 1;
+        });
 
-    const yearBoundaryIndex = indexFind(comparisonArray)((a,v,i,ar) => {
-        return v[2] === 1 && v[3] === 1;
-    });
+        const year = dateObject.year + 593 + (index< yearBoundaryIndex?1:0);
+        const [month,day] = [comparisonArray[index][0],comparisonArray[index][1]];
+        return {day,month,year};
 
-    const year = dateObject.year + 593 + (index< yearBoundaryIndex?1:0);
-    const [month,day] = [comparisonArray[index][0],comparisonArray[index][1]];
-    return {day,month,year};
-
+    }
 }
 
 function getDateObjectFromInput(dateString) {
@@ -108,7 +116,7 @@ function checkValidity(dateObject) {
     return true;
 }
 const dateObject ={day: 5, month: 1, year: 1425};
-export { getBanglaDate, getGregorianDate, getDateObjectFromInput,checkValidity};
+export { generateComparisonArray, getBanglaDate, getGregorianDate, getDateObjectFromInput,checkValidity,checkLeapYear};
 
 //console.log('bangla', getBanglaDate(dateObject));
 //

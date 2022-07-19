@@ -1,0 +1,16 @@
+{
+    "name": "dateconversion",
+    "version": "1.0.0",
+    "description": "Change the Gregorian Date to Bangla Calendars date",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "engines": {
+        "node": "16.x"
+    }
+}
