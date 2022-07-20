@@ -1,16 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
 import  * as http from 'http';
 import {getDate} from './getDate.mjs';
 import {generateComparisonArray} from './util.mjs';
