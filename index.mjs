@@ -15,6 +15,6 @@ let app = http.createServer((req, res) => {
 });
 app.on('listening',() => {comparisonArray =[ generateComparisonArray(true),generateComparisonArray(false)]});
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT || 3000);
 //console.log('Node server running on port 3000');
 
