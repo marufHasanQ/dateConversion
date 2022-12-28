@@ -51,13 +51,13 @@ function checkLeapYear(year) {
     return (year % 4 === 0 && year % 100 !== 0) || year % 400===0? true : false;
 }
 
-function getBanglaDate(comparisonArray) {
+function getBanglaDate(comparisonArrayPair) {
     return dateObject => {
-        //const comparisonArray = generateComparisonArray(checkLeapYear(dateObject.year + 594)); 
+        //const comparisonArrayPair = generateComparisonArray(checkLeapYear(dateObject.year + 594)); 
 
         //function getBanglaDate(dateObject) {
-        //   const comparisonArray = generateComparisonArray(checkLeapYear(dateObject.year)); 
-        comparisonArray = checkLeapYear(dateObject.year ) ? comparisonArray[0]: comparisonArray[1];
+        //   const comparisonArrayPair = generateComparisonArray(checkLeapYear(dateObject.year)); 
+        const comparisonArray = checkLeapYear(dateObject.year ) ? comparisonArrayPair[0]: comparisonArrayPair[1];
 
         const index = indexFind(comparisonArray)((a,v,i,ar) => {
             return v[0] === dateObject.month && v[1] === dateObject.day;

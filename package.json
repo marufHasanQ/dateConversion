@@ -4,13 +4,36 @@
     "description": "Change the Gregorian Date to Bangla Calendars date",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+        "testt": " jest",
         "start": "node index.mjs"
+    },
+    "jest": {
+        "transform": { },
+        "testMatch": [
+            "**/?(*.)test.?js"
+        ]
+    },
+    "jesttt": {
+        "moduleFileExtensions": ["mjs", "js", "jsx", "ts", "tsx", "node"],
+        "testMatch": [
+            "**/?(*.)test.?js"
+        ],
+        "testPathIgnorePatterns": [
+            "/node_modules/"
+        ],
+        "transform": { },
+        "transformIgnorePatterns": [
+            "\\.pnp\\.[^\\/]+$"
+        ]
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "engines": {
         "node": "16.x"
+    },
+    "devDependencies": {
+        "jest": "^29.3.1"
     }
 }
