@@ -1,7 +1,7 @@
 {
     "name": "dateconversion",
     "version": "1.0.0",
-    "description": "Change the Gregorian Date to Bangla Calendars date",
+    "description": "Change the Gregorian Date to Bangla Calendars date and vice versa",
     "main": "index.js",
     "scripts": {
         "test": "NODE_OPTIONS=--experimental-vm-modules jest",
